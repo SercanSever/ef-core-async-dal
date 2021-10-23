@@ -19,17 +19,17 @@ namespace AsyncProgramming.Data.DataAccees.EntityFramework
             _context = new AsyncProgrammingContext();
         }
 
-        public void Add(TEntity entity)
+        public async Task Add(TEntity entity)
         {
             _context.Add(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(TEntity entity)
+        public async Task Delete(TEntity entity)
         {
             var deletedEntity = _context.Entry(entity);
             deletedEntity.State = EntityState.Deleted;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public async Task<TEntity> Get(System.Linq.Expressions.Expression<Func<TEntity, bool>> filter)
@@ -44,11 +44,11 @@ namespace AsyncProgramming.Data.DataAccees.EntityFramework
                 : await _context.Set<TEntity>().Where(filter).ToListAsync();
         }
 
-        public void Update(TEntity entity)
+        public async Task Update(TEntity entity)
         {
             var updatedEntity = _context.Entry(entity);
             updatedEntity.State = EntityState.Modified;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }
