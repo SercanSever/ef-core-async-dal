@@ -22,5 +22,10 @@ namespace AsyncProgramming.Business.Concrete
         {
             return await _productDal.GetAll();
         }
+
+        public async Task<List<Product>> GetByCategoryName(string name)
+        {
+            return await _productDal.GetAll(x => x.Category.Name == name);
+        }
     }
 }

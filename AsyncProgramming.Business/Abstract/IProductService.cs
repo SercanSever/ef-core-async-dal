@@ -10,5 +10,6 @@ namespace AsyncProgramming.Business.Abstract
     public interface IProductService
     {
         Task<List<Product>> GetAll();
+        Task<List<Product>> GetByCategoryName(string name);
     }
 }

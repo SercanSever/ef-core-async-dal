@@ -3,14 +3,16 @@ using AsyncProgramming.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AsyncProgramming.Data.Migrations
 {
     [DbContext(typeof(AsyncProgrammingContext))]
-    partial class AsyncProgrammingContextModelSnapshot : ModelSnapshot
+    [Migration("20211023180217_mig3")]
+    partial class mig3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

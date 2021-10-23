@@ -3,14 +3,16 @@ using AsyncProgramming.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AsyncProgramming.Data.Migrations
 {
     [DbContext(typeof(AsyncProgrammingContext))]
-    partial class AsyncProgrammingContextModelSnapshot : ModelSnapshot
+    [Migration("20211023175531_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,16 +60,13 @@ namespace AsyncProgramming.Data.Migrations
 
             modelBuilder.Entity("AsyncProgramming.Entity.Concrete.Product", b =>
                 {
-                    b.HasOne("AsyncProgramming.Entity.Concrete.Category", null)
-                        .WithMany("Products")
+                    b.HasOne("AsyncProgramming.Entity.Concrete.Category", "Category")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("AsyncProgramming.Entity.Concrete.Category", b =>
-                {
-                    b.Navigation("Products");
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }
